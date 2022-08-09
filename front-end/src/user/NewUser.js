@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import {back_URL} from '../values'
 
 function NewUser() {
   const [Name,setName ] = useState()
@@ -8,11 +9,26 @@ function NewUser() {
   const [Mob,setMob ] = useState()
   const [Pass,setPass ] = useState()
 
-const HandleSubmit = (e)=>{
+const HandleSubmit = async (e)=>{
   e.preventDefault()
-  // console.log('prevented')
-  console.log(Name,Des,Address,Email,Mob,Pass)
+  const result = await fetch(back_URL,{
+    method:"POST",
+    headers:{
+      "Content-Type":"application/json",
+    },
+    body:JSON.stringify({
+      name : Name,
+      description : Des,
+      address : Address,
+      email : Email,
+      mobile : Mob,
+      password : Pass
+    })
+
+  })
   
+  const fin = await result.json()
+  console.log(fin)
 }
 
   return (

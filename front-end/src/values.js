@@ -1,0 +1,1 @@
+export const back_URL = 'http://localhost:5000/admin/happy'

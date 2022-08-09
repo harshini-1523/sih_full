@@ -1,5 +1,6 @@
 //Name of employee , Designation , Role of working , Email Id , Mobile No , Password
 
+import { back_URL } from '../values'
 import React, { useState } from 'react'
 
 function NewAdmin() {
@@ -10,10 +11,29 @@ function NewAdmin() {
   const [Mob,setMob ] = useState()
   const [Pass,setPass ] = useState()
 
-const HandleSubmit = (e)=>{
+// const HandleSubmit = (e)=>{
+//   e.preventDefault()
+//   console.log(Name,Des,Role,Email,Mob,Pass)
+// }
+
+const HandleSubmit = async (e)=>{
   e.preventDefault()
-  console.log(Name,Des,Role,Email,Mob,Pass)
-  
+  const result = await fetch(back_URL,{
+    method:"POST",
+    headers:{
+      "Content-Type":"application/json",
+    },
+    body:JSON.stringify({
+      name : Name,
+      description : Des,
+      role : Role,
+      email : Email,
+      mobile : Mob,
+      password : Pass
+    })
+  })
+  const fin = await result.json()
+  console.log(fin)
 }
 
   return (
