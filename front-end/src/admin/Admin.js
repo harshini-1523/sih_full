@@ -1,13 +1,25 @@
 import React, { useState } from 'react'
-
+import {back_URL} from '../values'
 
 function Admin() {
     const [id,setId] = useState()
     const [pass,setPass] = useState()
 
-    const HandleSubmit = (e)=>{
+    const HandleSubmit = async(e)=>{
         e.preventDefault()
         console.log(id,pass)
+        const result = await fetch(back_URL,{
+            method:"POST",
+            headers:{
+              "Content-Type":"application/json",
+            },
+            body:JSON.stringify({
+                Id : id,
+                Pass : pass
+            })
+        })
+        const fin = await result.json()
+        console.log(fin)
     }
   return (
     <div>
