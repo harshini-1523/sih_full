@@ -2,14 +2,14 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-let admin = new Schema({
+let user = new Schema({
   name: {
     type: String
   },
   designation: {
     type: String
   },
-  role : {
+  address: {
     type: String
   },
   email:{
@@ -23,4 +23,4 @@ let admin = new Schema({
   }
 });
 
-module.exports = mongoose.model("Admindata", admin);
+module.exports = mongoose.model("Userdata", user);

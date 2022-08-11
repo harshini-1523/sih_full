@@ -1,6 +1,6 @@
 //Name of employee , Designation , Role of working , Email Id , Mobile No , Password
 
-import { back_URL } from '../values'
+import { AdminURL} from '../values'
 import React, { useState } from 'react'
 
 function NewAdmin() {
@@ -18,14 +18,14 @@ function NewAdmin() {
 
 const HandleSubmit = async (e)=>{
   e.preventDefault()
-  const result = await fetch(back_URL,{
+  const result = await fetch(`${AdminURL}/NewAdmin`,{
     method:"POST",
     headers:{
       "Content-Type":"application/json",
     },
     body:JSON.stringify({
       name : Name,
-      description : Des,
+      designation: Des,
       role : Role,
       email : Email,
       mobile : Mob,
@@ -38,7 +38,7 @@ const HandleSubmit = async (e)=>{
 
   return (
     <div>
-        <h1>new User</h1>
+        <h1>New Admin</h1>
         <form onSubmit={HandleSubmit}>
             <label>Name of Employee <input type='text' onChange={(e)=>setName(e.target.value)} /></label><br /><br />
             <label>Designation<input type='text' onChange={(e)=>setDes(e.target.value)}/></label><br /><br />
