@@ -1,22 +1,22 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import {back_URL} from '../values'
+import { front_URL} from '../values'
 
 function User() {
     const [id,setId] = useState()
-    const [pass,setPass] = useState()
+    const [Pass,setPass] = useState()
 
     const HandleSubmit =async (e)=>{
         e.preventDefault()
-        console.log(id,pass)
-        const result = await fetch(back_URL,{
+        console.log(id,Pass)
+        const result = await fetch(front_URL,{
             method:"POST",
             headers:{
               "Content-Type":"application/json",
             },
             body:JSON.stringify({
-                Id : id,
-                Pass : pass
+                email : id,
+                pass : Pass
             })
         })
         const fin = await result.json()
@@ -26,18 +26,17 @@ function User() {
     <div>
         <h1>User data</h1>
         <Link to='newUser'>NewUser/Register</Link>
-        <form onSubmit={HandleSubmit}>
+        <form>
             <label>
                 Admin Id : 
-                <input type='text' onChange={(e)=>setId(e.target.value)}/>
+                <input type='email' required onChange={(e)=>setId(e.target.value)}/>
             </label><br /><br />
             <label>
                 Password : 
-                <input type='password' onChange={(e)=>setPass(e.target.value)} />
+                <input type='Password' required onChange={(e)=>setPass(e.target.value)} />
             </label>  
-            <p>forget password</p>         
-            <button type='submit'> submit
-                </button> 
+            <p>forget Password</p>         
+            <Link to='/NewAdmin' onClick={HandleSubmit}>submit</Link>
         </form>
     </div>
   )

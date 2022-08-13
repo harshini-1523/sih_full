@@ -6,6 +6,7 @@ import Admin from './admin/Admin';
 import User from './user/User';
 import NewUser from './user/NewUser';
 import NewAdmin from './admin/newAdmin';
+import Userpage from './user/Userpage';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path='user' element={<User />}/>
         <Route path='user/newUser' element={<NewUser />}/>
         <Route path='NewAdmin' element={<NewAdmin />}/>
+        <Route path='MainUser' element={<Userpage />}/>
       </Routes>
      </Router>
     </div>

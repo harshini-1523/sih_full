@@ -4,22 +4,28 @@ const Schema = mongoose.Schema;
 
 let admin = new Schema({
   name: {
-    type: String
+    type: String,
+    required: true
   },
   designation: {
-    type: String
+    type: String,
+    required: true
   },
   role : {
-    type: String
+    type: String,
+    required: true
   },
   email:{
-    type: String
+    type: String,
+    required: true
   },
   mobile:{
-    type: Number
+    type: Number,
+    required: true
   },
   password:{
-    type: String
+    type: String,
+    required: true
   }
 });
 
